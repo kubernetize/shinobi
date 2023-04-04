@@ -1,11 +1,15 @@
-FROM node:18-alpine3.17
+FROM alpine:3.17
+
+ARG TARGETARCH
 
 ENV APP_USER=shinobi \
     APP_HOME=/home/Shinobi \
     APP_UID=21353
 
 WORKDIR /home/Shinobi
-COPY . .
+COPY shinobi .
+COPY dist/shinobi-${TARGETARCH} shinobi
+COPY kubernetize.entrypoint.sh .
 
 RUN adduser -u $APP_UID -D -h $APP_HOME $APP_USER && \
     mkdir -p /config && \
@@ -24,4 +28,4 @@ USER $APP_UID
 
 ENTRYPOINT ["/home/Shinobi/kubernetize.entrypoint.sh"]
 
-CMD ["node", "camera.js"]
+CMD ["./shinobi"]
