@@ -15,8 +15,9 @@ fi
  npm install pkg
 
  node_modules/.bin/pkg package.json -t node18-linuxstatic-x64,node18-linuxstatic-arm64,node18-linuxstatic-arm --out-path dist
- # conform to Docker ARCH
+ # conform to Docker TARGETARCH
  mv dist/shinobi-x64 dist/shinobi-amd64
+ mv dist/shinobi-armv7 dist/shinobi-arm
 )
 
 rm -rf dist
