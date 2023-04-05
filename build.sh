@@ -9,3 +9,4 @@ if ! test -f package.json; then
 fi
 
 npm install
+npm install pg
