@@ -5,7 +5,8 @@ ENV APP_USER=shinobi \
     APP_UID=21353
 
 WORKDIR /home/Shinobi
-COPY . .
+COPY shinobi .
+COPY assets /
 
 RUN adduser -u $APP_UID -D -h $APP_HOME $APP_USER && \
     mkdir -p /config && \
@@ -22,6 +23,6 @@ EXPOSE 8080
 
 USER $APP_UID
 
-ENTRYPOINT ["/home/Shinobi/kubernetize.entrypoint.sh"]
+ENTRYPOINT ["/usr/local/sbin/docker-entrypoint.sh"]
 
 CMD ["node", "camera.js"]
