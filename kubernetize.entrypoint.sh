@@ -16,7 +16,6 @@ if ! test -f /config/conf.json ; then
 {
   "port": $SHINOBI_LISTEN_PORT,
   "debugLog": false,
-  "videosDir": "/videos",
   "passwordType": "sha512",
   "detectorMergePamRegionTriggers": true,
   "wallClockTimestampAsDefault": true,
